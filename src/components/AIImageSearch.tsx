@@ -77,7 +77,7 @@ const AIImageSearch = ({ onSearchComplete = () => {} }: AIImageSearchProps) => {
       e.stopPropagation();
       if (!isDragging) setIsDragging(true);
     },
-    [isDragging],
+    [isDragging]
   );
 
   const handleDrop = useCallback((e: React.DragEvent) => {
@@ -116,7 +116,7 @@ const AIImageSearch = ({ onSearchComplete = () => {} }: AIImageSearchProps) => {
     input.accept = "image/*";
     input.capture = "environment";
     input.onchange = (e) =>
-      handleFileInput(e as React.ChangeEvent<HTMLInputElement>);
+      handleFileInput(e as unknown as React.ChangeEvent<HTMLInputElement>);
     input.click();
   };
 
@@ -164,7 +164,9 @@ const AIImageSearch = ({ onSearchComplete = () => {} }: AIImageSearchProps) => {
       <CardContent>
         {!preview ? (
           <div
-            className={`border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? "border-primary bg-primary/5" : "border-gray-300"}`}
+            className={`border-2 border-dashed rounded-lg p-8 text-center ${
+              isDragging ? "border-primary bg-primary/5" : "border-gray-300"
+            }`}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}

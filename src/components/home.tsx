@@ -55,32 +55,40 @@ const categories = [
 
 const featuredProducts = [
   {
-    id: 1,
+    id: "1",
     name: "Vitamin C Serum",
     price: 24.99,
     image:
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80",
+    category: "Skincare",
+    inStock: true,
   },
   {
-    id: 2,
+    id: "2",
     name: "Hydrating Face Cream",
     price: 32.5,
     image:
       "https://images.unsplash.com/photo-1611930022073-84f3e05cd886?w=800&q=80",
+    category: "Skincare",
+    inStock: true,
   },
   {
-    id: 3,
+    id: "3",
     name: "Pain Relief Tablets",
     price: 12.99,
     image:
       "https://images.unsplash.com/photo-1550572017-edd951b55104?w=800&q=80",
+    category: "Pharmaceuticals",
+    inStock: false,
   },
   {
-    id: 4,
+    id: "4",
     name: "Sunscreen SPF 50",
     price: 18.75,
     image:
       "https://images.unsplash.com/photo-1556227834-09f1de7a7d14?w=800&q=80",
+    category: "Skincare",
+    inStock: true,
   },
 ];
 
