@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Heart, Filter } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -104,7 +105,7 @@ const ProductGrid = ({
       ? products
       : products.filter(
           (product) =>
-            product.category.toLowerCase() === selectedCategory.toLowerCase(),
+            product.category.toLowerCase() === selectedCategory.toLowerCase()
         );
 
   // Sort products
@@ -127,12 +128,17 @@ const ProductGrid = ({
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts.slice(
     indexOfFirstProduct,
-    indexOfLastProduct,
+    indexOfLastProduct
   );
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("user");
 
   const handleAddToCart = (productId: string) => {
-    // Placeholder for cart functionality
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
     console.log(`Added product ${productId} to cart`);
   };
 
