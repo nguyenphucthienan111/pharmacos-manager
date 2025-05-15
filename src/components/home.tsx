@@ -7,6 +7,7 @@ import { Card, CardContent } from "./ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "./ui/tabs";
 import AIImageSearch from "./AIImageSearch";
 import ProductGrid from "./ProductGrid";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
@@ -95,6 +96,8 @@ const featuredProducts = [
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("user");
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,7 +128,17 @@ const Home = () => {
               <Button variant="ghost" size="icon">
                 <ShoppingCart className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  if (!isLoggedIn) {
+                    navigate("/login");
+                  } else {
+                    navigate("/profile");
+                  }
+                }}
+              >
                 <User className="h-5 w-5" />
               </Button>
             </div>
